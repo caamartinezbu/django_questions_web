@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    "polls.apps.PollsConfig",
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -75,8 +76,15 @@ WSGI_APPLICATION = 'django_app.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'db_djangoapp',
+        'USER':'root',
+        'PASSWORD':'',
+        'HOST': 'localhost',
+        'PORT':'3306',
+        'OPTIONS':{
+            'init_command': "SET sql_mode= 'STRICT_TRANS_TABLES'"
+        }
     }
 }
 
@@ -104,8 +112,8 @@ AUTH_PASSWORD_VALIDATORS = [
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
 
 LANGUAGE_CODE = 'en-us'
-
-TIME_ZONE = 'UTC'
+# 'UTC
+TIME_ZONE = 'America/Bogota'
 
 USE_I18N = True
 
