@@ -1,0 +1,20 @@
+{% if latest_question_list %}
+    <ul>
+    
+    {% for question in latest_question_list  %}
+    <li>
+{% comment %} El primer parámetro que recibe la etiqueta URL es el app_name, en este caso app_name = “polls”.
+El segundo parámetro lo saca del name que definió en el path, en este caso name = “detail”.
+El tercer parámetro es el identificador de la pregunta. 
+{% endcomment %}
+        {% comment %} <a href="/polls/{{ question.id }}">{{ question.question_text }}</a> {% endcomment %}
+        <a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a>
+ 
+    </li>
+    {% endfor %}
+</ul>
+{% else %}
+<p>No polls are avalible</p>
+
+{% endif %}
+
